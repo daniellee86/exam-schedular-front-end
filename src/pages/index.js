@@ -7,12 +7,23 @@ export default function Home() {
   //State for search term
   const [searchInput, setSearchInput] = useState("");
   //state for filters to search against
-  const [selectedFilter, setSelectedFilter] = useState([]);
+  const [selectedFilter, setSelectedFilter] = useState("");
+
+  //constructs dynamic url with selected filter and search input as query params
+  function constructUrl(selectedFilter, searchInput) {
+    let url = "http://localhost:3000/api/exams";
+    if (selectedFilter && searchInput) {
+      url += `?filter_by=${selectedFilter}&filter_term=${searchInput}`;
+    }
+    return url;
+  }
 
   //triggers when component mounts or detects change in dependancy array
   useEffect(() => {
+    const url = constructUrl(selectedFilter, searchInput);
+    console.log(url);
     axios
-      .get("http://localhost:3000/api/exams")
+      .get(url)
       .then((response) => {
         setExamData(response.data);
         console.log(response.data);
@@ -20,7 +31,7 @@ export default function Home() {
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  }, [selectedFilter]);
 
   //set search input state
   const handleSearchInput = (e) => {
