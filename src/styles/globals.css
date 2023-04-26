@@ -3,6 +3,30 @@
 @tailwind utilities;
 
 body {
-  font-family: "Replica Pro", Helvetica, Arial;
-  @apply font-normal antialiased text-victvs-off-white bg-victvs-dark-black;
+  font-family: "Montserrat", sans-serif;
+  @apply font-normal antialiased;
+}
+
+.list-component-section {
+  @apply flex-1 flex items-center justify-center space-x-4 text-victvs-grey dark:text-victvs-off-white;
+}
+
+.exam-title {
+  @apply flex-1 flex items-center justify-center;
+}
+
+.exam-text {
+  @apply font-semibold text-sm text-victvs-dark-grey dark:text-victvs-off-white;
+}
+
+.list-title {
+  @apply text-3xl font-medium text-victvs-grey dark:text-victvs-off-white;
+}
+
+.search-input {
+  @apply w-full py-2 pl-10  rounded-3xl outline-none text-victvs-dark-grey placeholder-victvs-dark-grey bg-victvs-light-grey dark:bg-victvs-lightest-grey;
+}
+
+.dropdown {
+  @apply appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded-xl shadow leading-tight;
 }

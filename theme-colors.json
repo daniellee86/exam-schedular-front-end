@@ -1,13 +1,14 @@
 {
-  "victvs-black": "#14233C",
-  "victvs-dark-black": "#0d1729",
-  "victvs-dark-grey": "#144673",
-  "victvs-red": "#E64B5F",
-  "victvs-blue": "#50b9dc",
-  "victvs-orange": "#EB824B",
-  "victvs-green": "#9ABBA8",
-  "victvs-yellow": "#F5B946",
+  "victvs-black": "#0F0E0E",
+  "victvs-dark-grey": "#1E2022",
+  "victvs-grey": "#2C3333",
+  "victvs-light-grey": "#C9D6DF",
+  "victvs-lightest-grey": "#F0F5F9",
   "victvs-off-white": "#f5f5f5",
+  "victvs-blue": "#6DA9E4",
+  "victvs-red": "#FC2947",
+  "victvs-yellow": "#F7D060",
+  "victvs-green": "#AACB73",
 
   "current": "currentColor"
 }
