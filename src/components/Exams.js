@@ -10,7 +10,6 @@ function Exams({ examData, setExamData }) {
     axios
       .get("http://localhost:3000/api/exams")
       .then((response) => {
-        console.log(response.data);
         setExamData(response.data);
       })
       .catch((error) => {
@@ -41,17 +40,20 @@ function Exams({ examData, setExamData }) {
           </div>
           {/* LIST HEADINGS */}
           <div className="flex items-center border-y border-gray-300 py-2 mb-2 mr-2">
-            {titles.map((title) => (
-              <div className="exam-title">
+            {titles.map((title, index) => (
+              <div className="exam-title" key={index}>
                 <p className="exam-text">{title}</p>
               </div>
             ))}
           </div>
 
           {/* EXAM LIST */}
-          {examData.map((exam) => (
+          {examData.map((exam, index) => (
             //INDIVIDUAL LIST COMPONENT
-            <div className="flex items-center justify-between border border-gray-300 py-3 mb-2 mr-2 rounded-xl shadow cursor-pointer">
+            <div
+              className="flex items-center justify-between border border-gray-300 py-3 mb-2 mr-2 rounded-xl shadow cursor-pointer"
+              key={index}
+            >
               {/* TITLE */}
               <div className="flex-1 flex items-center justify-center ">
                 <p className="font-medium text-sm text-victvs-dark-grey dark:text-victvs-off-white">

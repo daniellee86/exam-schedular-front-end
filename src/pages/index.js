@@ -66,11 +66,11 @@ export default function Home({ theme, setTheme }) {
             {/* DATA VIS MODULES */}
             <div
               id="data-viz-1"
-              class="h-[28vh] col-span-5 rounded-xl  bg-victvs-off-white dark:bg-victvs-grey"
+              className="h-[28vh] col-span-5 rounded-xl  bg-victvs-off-white dark:bg-victvs-grey"
             ></div>
             <div
               id="data-viz-1"
-              class="h-[28vh] col-span-5 rounded-xl  bg-victvs-off-white dark:bg-victvs-grey"
+              className="h-[28vh] col-span-5 rounded-xl  bg-victvs-off-white dark:bg-victvs-grey"
             ></div>
           </section>
         </section>
