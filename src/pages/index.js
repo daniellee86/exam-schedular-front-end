@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Nav from "@/components/Nav";
 import Filter from "@/components/Filter";
 import Exams from "@/components/Exams";
+import Login from "@/components/Login";
 
 export default function Home({ theme, setTheme }) {
   //ALL EXAMS GLOBAL
@@ -51,14 +52,19 @@ export default function Home({ theme, setTheme }) {
           {/* FILTERS COMPONENT */}
           <section className="col-span-2 px-5 py-4 rounded-xl bg-victvs-off-white dark:bg-victvs-grey">
             <div id="filter-container" className="col-span-2 h-full">
-              <div id="filter-wrapper" className="bg-yellow-400 h-[65%]">
+              <div id="filter-wrapper" className="h-[65%]">
                 <Filter
                   examData={examData}
                   filteredExamData={filteredExamData}
                   setFilteredExamData={setFilteredExamData}
                 ></Filter>
               </div>
-              <div id="login-wrapper" className="bg-green-400 h-[35%]"></div>
+              <div
+                id="login-wrapper"
+                className="flex flex-col justify-end  h-[35%]"
+              >
+                <Login></Login>
+              </div>
             </div>
           </section>
           {/* EXAM LIST COMPONENT */}

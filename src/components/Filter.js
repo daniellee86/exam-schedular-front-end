@@ -32,14 +32,20 @@ const Filter = ({ examData, filteredExamData, setFilteredExamData }) => {
   }, [nameFilter, locationFilter, dateFilter]);
 
   //Sets filter states according to filter category
-  function handleFilterCategories(event, filterCategory) {
+  const handleFilterCategories = (event, filterCategory) => {
     const filter = event.target.value;
     filterCategory === "CandidateName"
       ? setNameFilter(filter)
       : filterCategory === "LocationName"
       ? setLocationFilter(filter)
       : setDateFilter(filter);
-  }
+  };
+
+  const handleReset = () => {
+    setNameFilter("");
+    setLocationFilter("");
+    setDateFilter("");
+  };
 
   //data for ui rendering
   const filterCategories = ["CandidateName", "LocationName", "Date"];
@@ -50,16 +56,16 @@ const Filter = ({ examData, filteredExamData, setFilteredExamData }) => {
   };
 
   return (
-    <div className="flex flex-col bg-orange-400">
+    <div className="flex flex-col p-1">
       <label
         htmlFor="dropdowns"
         className="dark:text--victvs-off-white text-victvs-dark-grey font-medium mb-2"
       >
-        Filters
+        Exam filters
       </label>
 
       {filterCategories.map((filterCategory, index) => (
-        <div className="relative px-1 mb-5" id="dropdowns" key={index}>
+        <div className="relative  mb-5" id="dropdowns" key={index}>
           <select
             id="dropdown"
             className="dropdown focus:outline-none focus:shadow-outline "
@@ -74,9 +80,9 @@ const Filter = ({ examData, filteredExamData, setFilteredExamData }) => {
               handleFilterCategories(event, filterCategory);
             }}
           >
-            <option disabled value="">
-              {optionLabels[filterCategory] || ""}
-            </option>
+            <option value="">{`All ${
+              optionLabels[filterCategory] || ""
+            }`}</option>
             {/* dynamic options for name dropdown */}
             {filterCategory === "CandidateName" &&
               Object.entries(candidateMap).map(([name, count]) => (
@@ -114,6 +120,12 @@ const Filter = ({ examData, filteredExamData, setFilteredExamData }) => {
           </div>
         </div>
       ))}
+      <button
+        onClick={handleReset}
+        className="w-full font-medium bg-white border border-gray-400 hover:border-gray-500 px-4 py-2  rounded-xl shadow ;"
+      >
+        Reset
+      </button>
     </div>
   );
 };
