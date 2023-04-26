@@ -7,6 +7,14 @@ body {
   @apply font-normal antialiased;
 }
 
+.toggle-text {
+  @apply dark:text-victvs-off-white text-victvs-dark-grey;
+}
+
+.toggle-background {
+  @apply bg-victvs-off-white dark:bg-victvs-grey;
+}
+
 .list-component-section {
   @apply flex-1 flex items-center justify-center space-x-4 text-victvs-grey dark:text-victvs-off-white;
 }
@@ -20,7 +28,7 @@ body {
 }
 
 .list-title {
-  @apply text-3xl font-medium text-victvs-grey dark:text-victvs-off-white;
+  @apply text-2xl font-medium text-victvs-grey dark:text-victvs-off-white;
 }
 
 .search-input {
@@ -28,5 +36,5 @@ body {
 }
 
 .dropdown {
-  @apply appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded-xl shadow leading-tight;
+  @apply appearance-none w-full bg-victvs-light-grey dark:bg-victvs-lightest-grey border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded-xl shadow leading-tight;
 }

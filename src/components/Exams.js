@@ -25,8 +25,8 @@ function Exams({ filteredExamData, setFilteredExamData, setExamData }) {
     <>
       {filteredExamData && (
         // LIST STATS
-        <section className="h-full overflow-auto  bg-victvs-off-white dark:bg-victvs-grey">
-          <div className="flex items-center justify-between mb-4 mr-2 text-victvs-dark-grey dark:text-victvs-off-white">
+        <section className="h-full overflow-auto toggle-background">
+          <div className="flex items-center justify-between mb-4 mr-2 toggle-text">
             <div className="">
               <h2 className="list-title">Exam List</h2>
               <p className="text-sm">
@@ -59,24 +59,20 @@ function Exams({ filteredExamData, setFilteredExamData, setExamData }) {
             >
               {/* TITLE */}
               <div className="flex-1 flex items-center justify-center ">
-                <p className="font-medium text-sm text-victvs-dark-grey dark:text-victvs-off-white">
-                  {exam.Title}
-                </p>
+                <p className="font-medium text-sm toggle-text">{exam.Title}</p>
               </div>
 
               {/* NAME */}
               <div className=" list-component-section ">
                 <BsPerson className="text-victvs-blue" size={20}></BsPerson>
-                <span className="text-sm text-victvs-dark-grey dark:text-victvs-off-white">
+                <span className="text-sm toggle-text">
                   {exam.CandidateName}
                 </span>
               </div>
               {/* LOCATION */}
               <div className="list-component-section">
                 <FaMapMarkerAlt className="text-victvs-yellow" size={15} />
-                <span className="text-sm text-victvs-dark-grey dark:text-victvs-off-white">
-                  {exam.LocationName}
-                </span>
+                <span className="text-sm toggle-text">{exam.LocationName}</span>
               </div>
               {/* DATE */}
               <div className="list-component-section">

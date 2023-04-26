@@ -1,4 +1,6 @@
 import "@/styles/globals.css";
+import "mapbox-gl/dist/mapbox-gl.css";
+
 import { useState } from "react";
 
 export default function App({ Component, pageProps }) {

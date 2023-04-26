@@ -57,10 +57,7 @@ const Filter = ({ examData, filteredExamData, setFilteredExamData }) => {
 
   return (
     <div className="flex flex-col p-1">
-      <label
-        htmlFor="dropdowns"
-        className="dark:text--victvs-off-white text-victvs-dark-grey font-medium mb-2"
-      >
+      <label htmlFor="dropdowns" className="toggle-text font-medium mb-4">
         Exam filters
       </label>
 
@@ -68,7 +65,7 @@ const Filter = ({ examData, filteredExamData, setFilteredExamData }) => {
         <div className="relative  mb-5" id="dropdowns" key={index}>
           <select
             id="dropdown"
-            className="dropdown focus:outline-none focus:shadow-outline "
+            className="dropdown focus:outline-none focus:shadow-outline text-sm "
             value={
               filterCategory === "CandidateName"
                 ? nameFilter
@@ -122,7 +119,7 @@ const Filter = ({ examData, filteredExamData, setFilteredExamData }) => {
       ))}
       <button
         onClick={handleReset}
-        className="w-full font-medium bg-white border border-gray-400 hover:border-gray-500 px-4 py-2  rounded-xl shadow ;"
+        className="w-full text-sm font-medium bg-victvs-light-grey dark:bg-victvs-lightest-grey border border-gray-400 hover:border-gray-500 px-4 py-2  rounded-xl shadow ;"
       >
         Reset
       </button>

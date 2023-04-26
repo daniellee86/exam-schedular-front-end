@@ -13,21 +13,25 @@ const Nav = ({ theme, setTheme }) => {
   };
   return (
     // NAVBAR
-    <nav className="h-[10vh] col-span-12  flex justify-center items-center px-5 rounded-xl bg-victvs-off-white dark:bg-victvs-grey">
+    <nav className="h-[10vh] col-span-12  flex justify-center items-center px-5 rounded-xl toggle-background">
       {/* LINK CONTAINER */}
       <div className="w-full flex items-center">
-        <div
-          id="logo-wrapper"
-          className=" flex-1 flex justify-start items-center"
-        >
-          {theme === "dark" ? (
-            <BsGlobeAmericas className="text-victvs-off-white" size={40} />
-          ) : (
-            <BsGlobeAmericas className="text-victvs-dark-grey" size={40} />
-          )}
-          <h1 className="ml-2 font-semibold text-lg tracking-widest text-victvs-dark-grey dark:text-victvs-off-white">
-            VICTVS
-          </h1>
+        <div className="flex-1 flex items-center">
+          <div className="flex-shrink-0">
+            {theme === "dark" ? (
+              <BsGlobeAmericas className="text-victvs-off-white text-4xl" />
+            ) : (
+              <BsGlobeAmericas className="text-victvs-dark-grey text-4xl" />
+            )}
+          </div>
+          <div className="ml-4">
+            <a href="https://github.com/daniellee86" target="_blank">
+              <h1 className="font-semibold text-lg tracking-widest text-victvs-blue dark:text-victvs-off-white hover:text-victvs-dark-blue cursor-pointer">
+                VICTVS
+              </h1>
+            </a>
+            <p className="text-xs text-gray-500">Global Exam Invigilation</p>
+          </div>
         </div>
         {/* SEARCH */}
         <div className="relative flex-1">

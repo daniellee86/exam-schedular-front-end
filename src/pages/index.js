@@ -5,6 +5,8 @@ import Nav from "@/components/Nav";
 import Filter from "@/components/Filter";
 import Exams from "@/components/Exams";
 import Login from "@/components/Login";
+import Map from "@/components/Map";
+import Clock from "@/components/Clock";
 
 export default function Home({ theme, setTheme }) {
   //ALL EXAMS GLOBAL
@@ -50,7 +52,7 @@ export default function Home({ theme, setTheme }) {
           className="h-[80vh] col-span-12 grid grid-cols-12 gap-x-4"
         >
           {/* FILTERS COMPONENT */}
-          <section className="col-span-2 px-5 py-4 rounded-xl bg-victvs-off-white dark:bg-victvs-grey">
+          <section className="col-span-2 px-5 py-4 rounded-xl toggle-background">
             <div id="filter-container" className="col-span-2 h-full">
               <div id="filter-wrapper" className="h-[65%]">
                 <Filter
@@ -71,7 +73,7 @@ export default function Home({ theme, setTheme }) {
           <section className="col-span-10 grid grid-cols-10  gap-x-4 gap-y-4 ">
             <div
               id="exams-wrapper"
-              className="h-[50vh] col-span-10 px-5 py-2 bg-victvs-off-white dark:bg-victvs-grey rounded-xl"
+              className="h-[50vh] col-span-10 px-5 py-2 toggle-background rounded-xl"
             >
               <Exams
                 filteredExamData={filteredExamData}
@@ -82,12 +84,16 @@ export default function Home({ theme, setTheme }) {
             {/* DATA VIS MODULES */}
             <div
               id="data-viz-1"
-              className="h-[28vh] col-span-5 rounded-xl  bg-victvs-off-white dark:bg-victvs-grey"
-            ></div>
+              className="h-[28vh] col-span-5 rounded-xl toggle-background flex justify-center items-center"
+            >
+              <Clock theme={theme} />
+            </div>
             <div
-              id="data-viz-1"
-              className="h-[28vh] col-span-5 rounded-xl  bg-victvs-off-white dark:bg-victvs-grey"
-            ></div>
+              id="data-viz-2"
+              className="h-[28vh] col-span-5 rounded-xl  toggle-background overflow-hidden"
+            >
+              <Map data={filteredExamData} />
+            </div>
           </section>
         </section>
       </div>
