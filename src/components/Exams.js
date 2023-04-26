@@ -4,13 +4,14 @@ import { FaMapMarkerAlt } from "react-icons/fa";
 import { BsCalendar } from "react-icons/bs";
 import { BsPerson } from "react-icons/bs";
 
-function Exams({ examData, setExamData }) {
+function Exams({ filteredExamData, setFilteredExamData, setExamData }) {
   //runs on mount, gets exams, saves to global state
   useEffect(() => {
     axios
       .get("http://localhost:3000/api/exams")
       .then((response) => {
         setExamData(response.data);
+        setFilteredExamData(response.data);
       })
       .catch((error) => {
         console.log(error);
@@ -22,19 +23,21 @@ function Exams({ examData, setExamData }) {
 
   return (
     <>
-      {examData && (
+      {filteredExamData && (
         // LIST STATS
         <section className="h-full overflow-auto  bg-victvs-off-white dark:bg-victvs-grey">
           <div className="flex items-center justify-between mb-4 mr-2 text-victvs-dark-grey dark:text-victvs-off-white">
             <div className="">
               <h2 className="list-title">Exam List</h2>
               <p className="text-sm">
-                <span className="font-bold">{examData.length} in total,</span>{" "}
+                <span className="font-bold">
+                  {filteredExamData.length} in total,
+                </span>{" "}
                 proceed to check them
               </p>
             </div>
             <div className="flex flex-col items-center mr-2">
-              <h2 className="list-title">20</h2>
+              <h2 className="list-title">{filteredExamData.length}</h2>
               <p className="text-sm">In progress</p>
             </div>
           </div>
@@ -48,7 +51,7 @@ function Exams({ examData, setExamData }) {
           </div>
 
           {/* EXAM LIST */}
-          {examData.map((exam, index) => (
+          {filteredExamData.map((exam, index) => (
             //INDIVIDUAL LIST COMPONENT
             <div
               className="flex items-center justify-between border border-gray-300 py-3 mb-2 mr-2 rounded-xl shadow cursor-pointer"

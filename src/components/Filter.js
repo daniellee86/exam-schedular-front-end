@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import handleHashMaps from "../utils/handleHashMaps";
 import handleDate from "@/utils/handleDate";
+import handleFilter from "@/utils/handleFilter";
 
-const Filter = ({ examData }) => {
+const Filter = ({ examData, filteredExamData, setFilteredExamData }) => {
   const [nameFilter, setNameFilter] = useState("");
   const [locationFilter, setLocationFilter] = useState("");
   const [dateFilter, setDateFilter] = useState("");
@@ -12,12 +13,32 @@ const Filter = ({ examData }) => {
 
   useEffect(() => {
     //Generates hash maps for use by dynamic filter options
-    handleHashMaps(examData, setCandidateMap, setDateMap, setLocationMap);
-  }, [examData]);
+    handleHashMaps(
+      filteredExamData,
+      setCandidateMap,
+      setDateMap,
+      setLocationMap
+    );
+  }, [filteredExamData]);
 
-  //handles filter options
-  function handleChange(event) {
-    setSelectedOption(event.target.value);
+  useEffect(() => {
+    handleFilter(
+      examData,
+      nameFilter,
+      locationFilter,
+      dateFilter,
+      setFilteredExamData
+    );
+  }, [nameFilter, locationFilter, dateFilter]);
+
+  //Sets filter states according to filter category
+  function handleFilterCategories(event, filterCategory) {
+    const filter = event.target.value;
+    filterCategory === "CandidateName"
+      ? setNameFilter(filter)
+      : filterCategory === "LocationName"
+      ? setLocationFilter(filter)
+      : setDateFilter(filter);
   }
 
   //data for ui rendering
@@ -50,8 +71,7 @@ const Filter = ({ examData }) => {
                 : dateFilter
             }
             onChange={(event) => {
-              // handleChange(event.target.value);
-              console.log("Selected option: ", event.target.value);
+              handleFilterCategories(event, filterCategory);
             }}
           >
             <option disabled value="">

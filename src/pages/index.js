@@ -8,8 +8,10 @@ import Exams from "@/components/Exams";
 export default function Home({ theme, setTheme }) {
   //ALL EXAMS GLOBAL
   const [examData, setExamData] = useState([]);
+  //FILTERED EXAMS GLOBAL
+  const [filteredExamData, setFilteredExamData] = useState([]);
 
-  //USEEFFECT TO SET GLOBAL THEME BASED ON WINDOW.MATCHMAEDIA API
+  //USEEFFECT TO SET GLOBAL THEME BASED ON WINDOW.MATCHMEDIA API
   useEffect(() => {
     if (
       localStorage.theme === "dark" ||
@@ -50,7 +52,11 @@ export default function Home({ theme, setTheme }) {
           <section className="col-span-2 px-5 py-4 rounded-xl bg-victvs-off-white dark:bg-victvs-grey">
             <div id="filter-container" className="col-span-2 h-full">
               <div id="filter-wrapper" className="bg-yellow-400 h-[65%]">
-                <Filter examData={examData}></Filter>
+                <Filter
+                  examData={examData}
+                  filteredExamData={filteredExamData}
+                  setFilteredExamData={setFilteredExamData}
+                ></Filter>
               </div>
               <div id="login-wrapper" className="bg-green-400 h-[35%]"></div>
             </div>
@@ -61,7 +67,11 @@ export default function Home({ theme, setTheme }) {
               id="exams-wrapper"
               className="h-[50vh] col-span-10 px-5 py-2 bg-victvs-off-white dark:bg-victvs-grey rounded-xl"
             >
-              <Exams examData={examData} setExamData={setExamData}></Exams>
+              <Exams
+                filteredExamData={filteredExamData}
+                setFilteredExamData={setFilteredExamData}
+                setExamData={setExamData}
+              ></Exams>
             </div>
             {/* DATA VIS MODULES */}
             <div

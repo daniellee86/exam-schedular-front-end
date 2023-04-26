@@ -1,35 +1,29 @@
 const handleHashMaps = (
-  examData,
+  filteredExamData,
   setCandidateMap,
   setDateMap,
   setLocationMap
 ) => {
-  examData?.forEach((item) => {
-    const { CandidateName, Date, LocationName } = item;
+  const { candidateMap, dateMap, locationMap } = filteredExamData.reduce(
+    (acc, { CandidateName, Date, LocationName }) => {
+      // Create a hash map for CandidateName
+      acc.candidateMap[CandidateName] =
+        (acc.candidateMap[CandidateName] || 0) + 1;
 
-    // Create a hash map for CandidateName
-    setCandidateMap((prevCandidateMap) => {
-      const updatedCandidateMap = { ...prevCandidateMap };
-      updatedCandidateMap[CandidateName] =
-        (prevCandidateMap[CandidateName] || 0) + 1;
-      return updatedCandidateMap;
-    });
+      // Create a hash map for Date
+      acc.dateMap[Date] = (acc.dateMap[Date] || 0) + 1;
 
-    // Create a hash map for Date
-    setDateMap((prevDateMap) => {
-      const updatedDateMap = { ...prevDateMap };
-      updatedDateMap[Date] = (prevDateMap[Date] || 0) + 1;
-      return updatedDateMap;
-    });
+      // Create a hash map for LocationName
+      acc.locationMap[LocationName] = (acc.locationMap[LocationName] || 0) + 1;
 
-    // Create a hash map for LocationName
-    setLocationMap((prevLocationMap) => {
-      const updatedLocationMap = { ...prevLocationMap };
-      updatedLocationMap[LocationName] =
-        (prevLocationMap[LocationName] || 0) + 1;
-      return updatedLocationMap;
-    });
-  });
+      return acc;
+    },
+    { candidateMap: {}, dateMap: {}, locationMap: {} }
+  );
+
+  setCandidateMap(candidateMap);
+  setDateMap(dateMap);
+  setLocationMap(locationMap);
 };
 
 export default handleHashMaps;
