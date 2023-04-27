@@ -2,6 +2,24 @@ import React, { useState, useEffect } from "react";
 import handleHashMaps from "../utils/handleHashMaps";
 import handleDate from "@/utils/handleDate";
 import handleFilter from "@/utils/handleFilter";
+import { motion } from "framer-motion";
+
+//animation variants
+const variants = {
+  hidden: {
+    opacity: 0,
+    y: 15,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: 0.2,
+      duration: 1.5,
+      ease: "easeOut",
+    },
+  },
+};
 
 const Filter = ({ examData, filteredExamData, setFilteredExamData }) => {
   const [nameFilter, setNameFilter] = useState("");
@@ -56,17 +74,28 @@ const Filter = ({ examData, filteredExamData, setFilteredExamData }) => {
   };
 
   return (
-    <div className="flex flex-col p-1">
-      <label
+    <motion.div
+      variants={variants}
+      initial="hidden"
+      animate="visible"
+      className="flex flex-col p-1"
+    >
+      <motion.label
         htmlFor="dropdowns"
         className="toggle-text text-sm sm:text-base font-medium mb-4"
+        variants={variants}
       >
         Exam filters
-      </label>
+      </motion.label>
 
       {filterCategories.map((filterCategory, index) => (
-        <div className="relative  mb-5" id="dropdowns" key={index}>
-          <select
+        <motion.div
+          className="relative  mb-5"
+          id="dropdowns"
+          key={index}
+          variants={variants}
+        >
+          <motion.select
             id="dropdown"
             className="dropdown focus:outline-none focus:shadow-outline text-sm "
             value={
@@ -79,6 +108,7 @@ const Filter = ({ examData, filteredExamData, setFilteredExamData }) => {
             onChange={(event) => {
               handleFilterCategories(event, filterCategory);
             }}
+            variants={variants}
           >
             <option value="">{`All ${
               optionLabels[filterCategory] || ""
@@ -108,7 +138,7 @@ const Filter = ({ examData, filteredExamData, setFilteredExamData }) => {
                   </option>
                 );
               })}
-          </select>
+          </motion.select>
           <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
             <svg
               className="fill-current h-4 w-4"
@@ -118,15 +148,16 @@ const Filter = ({ examData, filteredExamData, setFilteredExamData }) => {
               <path d="M10 12l-5-5 1.41-1.41L10 9.17l3.59-3.58L15 7l-5 5z" />
             </svg>
           </div>
-        </div>
+        </motion.div>
       ))}
-      <button
+      <motion.button
+        variants={variants}
         onClick={handleReset}
         className="w-full text-sm font-medium bg-victvs-light-grey dark:bg-victvs-lightest-grey border border-gray-400 hover:border-gray-500 px-4 py-2  rounded-xl shadow ;"
       >
         Reset
-      </button>
-    </div>
+      </motion.button>
+    </motion.div>
   );
 };
 

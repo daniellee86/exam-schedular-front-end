@@ -2,37 +2,90 @@ import axios from "axios";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import { BsCalendar, BsPerson, BsArrowLeft } from "react-icons/bs";
 import { useRouter } from "next/router";
+import { motion } from "framer-motion";
 
 function ExamDetails({ exam }) {
   const router = useRouter();
+
+  //animation variants
+  const variants = {
+    initial: { opacity: 0, y: -50 },
+    animate: { opacity: 1, y: 0, transition: { duration: 1.5 } },
+  };
+
   return (
     <div className="flex flex-col min-h-screen bg-victvs-light-grey dark:bg-victvs-dark-grey">
       {/* Navbar component */}
-      {/* Navbar component */}
-      <nav className="bg-victvs-off-white dark:bg-victvs-dark-grey toggle-text px-6 py-8 flex justify-between">
-        <div
+      <motion.nav
+        className="bg-victvs-off-white dark:bg-victvs-dark-grey toggle-text px-6 py-8 flex justify-between"
+        variants={variants}
+        initial="initial"
+        animate="animate"
+      >
+        <motion.div
           className="flex items-center cursor-pointer"
           onClick={() => router.back()}
         >
-          <BsArrowLeft className="mr-2 text-lg sm:text-xl lg:text-2xl 3xl:text-3xl" />
-          <p className="text-md lg:text-lg xl:text-xl 3xl:text-2xl">Back</p>
-        </div>
-        <h1 className="text-lg sm:text-xl lg:text-2xl 2xl:text-4xl font-bold text-victvs-blue">
+          <motion.span
+            className="mr-2 text-lg sm:text-xl lg:text-2xl 3xl:text-3xl"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1, transition: { delay: 0.2 } }}
+          >
+            <BsArrowLeft />
+          </motion.span>
+          <motion.p
+            className="text-md lg:text-lg xl:text-xl 3xl:text-2xl"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1, transition: { delay: 0.2 } }}
+          >
+            Back
+          </motion.p>
+        </motion.div>
+        <motion.h1
+          className="text-lg sm:text-xl lg:text-2xl 2xl:text-4xl font-bold text-victvs-blue"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1, transition: { delay: 0.4 } }}
+        >
           {exam.Title}
-        </h1>
-        <div className="flex items-center">
-          <BsPerson className="mr-2 text-lg sm:text-xl lg:text-2xl 3xl:text-3xl" />
-          <p className="text-md lg:text-lg xl:text-xl 3xl:text-2xl">
+        </motion.h1>
+        <motion.div className="flex items-center">
+          <motion.span
+            className="mr-2 text-lg sm:text-xl lg:text-2xl 3xl:text-3xl"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1, transition: { delay: 0.6 } }}
+          >
+            <BsPerson />
+          </motion.span>
+          <motion.p
+            className="text-md lg:text-lg xl:text-xl 3xl:text-2xl"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1, transition: { delay: 0.6 } }}
+          >
             {exam.CandidateName}
-          </p>
-        </div>
-      </nav>
+          </motion.p>
+        </motion.div>
+      </motion.nav>
       {/* Exam instructions and guidelines */}
-      <div className="flex flex-col items-center justify-center dark:bg-victvs-off-white py-6 px-6">
-        <h2 className="text-2xl font-bold mb-4 text-center xl:text-left">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
+        className="flex flex-col items-center justify-center dark:bg-victvs-off-white py-6 px-6"
+      >
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.2 }}
+          className="text-2xl font-bold mb-4 text-center xl:text-left"
+        >
           Exam instructions and guidelines:
-        </h2>
-        <div className="w-full max-w-md xl:max-w-full 3xl:text-lg">
+        </motion.h2>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.4 }}
+          className="w-full max-w-md xl:max-w-full 3xl:text-lg"
+        >
           <p className="mb-2">
             <strong>Before the exam, please make sure to:</strong>
           </p>
@@ -71,8 +124,8 @@ function ExamDetails({ exam }) {
             </a>
             .
           </p>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
 
       {/* Exam details container  */}
       <main className="flex-grow px-6 py-4 grid grid-cols-1 md:grid-cols-2 gap-8">
