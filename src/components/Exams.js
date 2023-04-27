@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import Link from "next/link";
 import axios from "axios";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import { BsCalendar } from "react-icons/bs";
@@ -53,33 +54,41 @@ function Exams({ filteredExamData, setFilteredExamData, setExamData }) {
           {/* EXAM LIST */}
           {filteredExamData.map((exam, index) => (
             //INDIVIDUAL LIST COMPONENT
-            <div
-              className="flex items-center justify-between border border-gray-300 py-3 mb-2 mr-2 rounded-xl shadow cursor-pointer"
-              key={index}
-            >
-              {/* TITLE */}
-              <div className="flex-1 flex items-center justify-center ">
-                <p className="font-medium text-sm toggle-text">{exam.Title}</p>
-              </div>
+            <Link href={`/${exam.id}`} key={index}>
+              <div
+                className="flex items-center justify-between border border-gray-300 py-3 mb-2 mr-2 rounded-xl shadow cursor-pointer"
+                key={index}
+              >
+                {/* TITLE */}
+                <div className="flex-1 flex items-center justify-center ">
+                  <p className="font-medium text-sm toggle-text">
+                    {exam.Title}
+                  </p>
+                </div>
 
-              {/* NAME */}
-              <div className=" list-component-section ">
-                <BsPerson className="text-victvs-blue" size={20}></BsPerson>
-                <span className="text-sm toggle-text">
-                  {exam.CandidateName}
-                </span>
+                {/* NAME */}
+                <div className=" list-component-section ">
+                  <BsPerson className="text-victvs-blue" size={20}></BsPerson>
+                  <span className="text-sm toggle-text">
+                    {exam.CandidateName}
+                  </span>
+                </div>
+                {/* LOCATION */}
+                <div className="list-component-section">
+                  <FaMapMarkerAlt className="text-victvs-yellow" size={15} />
+                  <span className="text-sm toggle-text">
+                    {exam.LocationName}
+                  </span>
+                </div>
+                {/* DATE */}
+                <div className="list-component-section">
+                  <BsCalendar className="text-victvs-green" size={15} />
+                  <span className="text-victvs-red/80 text-sm">
+                    {exam.Date}
+                  </span>
+                </div>
               </div>
-              {/* LOCATION */}
-              <div className="list-component-section">
-                <FaMapMarkerAlt className="text-victvs-yellow" size={15} />
-                <span className="text-sm toggle-text">{exam.LocationName}</span>
-              </div>
-              {/* DATE */}
-              <div className="list-component-section">
-                <BsCalendar className="text-victvs-green" size={15} />
-                <span className="text-victvs-red/80 text-sm">{exam.Date}</span>
-              </div>
-            </div>
+            </Link>
           ))}
         </section>
       )}

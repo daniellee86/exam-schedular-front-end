@@ -4,8 +4,7 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head>
-        <title>VICTVS Exam Schedular</title>
-        <meta name="description" content="Remote proctering schedular app." />
+        <meta name="description" content="Global Exam Invigilator app." />
         <meta name="keywords" content="education, app, learning" />
         <meta name="author" content="Daniel Clough" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
