@@ -38,21 +38,21 @@ export default function Home({ theme, setTheme }) {
 
   return (
     //  App container
-    <main className="min-h-screen flex justify-center items-center bg-victvs-light-grey dark:bg-victvs-black">
+    <main className="min-h-screen lg:max-h-screen flex justify-center items-center bg-victvs-light-grey dark:bg-victvs-black overflow-hidden">
       {/* Content container 12-col grid */}
       <div
         id="layout-container"
-        className="w-[90%] h-[100vh] p-5 grid grid-cols-12"
+        className="w-[95%] sm:w-[90%]lg:max-w-[95%] lg:w-[90%] lg:h-[100vh] py-2 gap-y-2 lg:gap-y-0 sm:p-5 grid grid-cols-12"
       >
         {/* NAV COMPONENT */}
         <Nav theme={theme} setTheme={setTheme}></Nav>
         {/* EXAMS DASHBOARD */}
         <section
           id="dashboard"
-          className="h-[80vh] col-span-12 grid grid-cols-12 gap-x-4"
+          className="lg:h-[80vh] col-span-12 grid grid-cols-12 gap-y-2 lg:gap-x-4"
         >
           {/* FILTERS COMPONENT */}
-          <section className="col-span-2 px-5 py-4 rounded-xl toggle-background">
+          <section className="col-span-12 lg:col-span-3 xl:col-span-2 px-2 py-2 sm:px-5 sm:py-4 rounded-xl toggle-background">
             <div id="filter-container" className="col-span-2 h-full">
               <div id="filter-wrapper" className="h-[65%]">
                 <Filter
@@ -70,10 +70,10 @@ export default function Home({ theme, setTheme }) {
             </div>
           </section>
           {/* EXAM LIST COMPONENT */}
-          <section className="col-span-10 grid grid-cols-10  gap-x-4 gap-y-4 ">
+          <section className="col-span-12 lg:col-span-9 xl:col-span-10 grid grid-cols-10 gap-x-4 gap-y-4 ">
             <div
               id="exams-wrapper"
-              className="h-[50vh] col-span-10 px-5 py-2 toggle-background rounded-xl"
+              className="h-[90vh] lg:h-[50vh] col-span-12 lg:col-span-10 px-2 sm:px-5 py-2 toggle-background rounded-xl"
             >
               <Exams
                 filteredExamData={filteredExamData}
@@ -84,13 +84,13 @@ export default function Home({ theme, setTheme }) {
             {/* DATA VIS MODULES */}
             <div
               id="data-viz-1"
-              className="h-[28vh] col-span-5 rounded-xl toggle-background flex justify-center items-center"
+              className="hidden h-[28vh] col-span-5 rounded-xl toggle-background lg:flex lg:justify-center lg:items-center"
             >
               <Clock theme={theme} />
             </div>
             <div
               id="data-viz-2"
-              className="h-[28vh] col-span-5 rounded-xl  toggle-background overflow-hidden"
+              className="hidden lg:block h-[28vh] col-span-5 rounded-xl  toggle-background overflow-hidden"
             >
               <Map data={filteredExamData} />
             </div>

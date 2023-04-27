@@ -24,15 +24,15 @@ body {
 }
 
 .exam-text {
-  @apply font-semibold text-sm text-victvs-dark-grey dark:text-victvs-off-white;
+  @apply font-semibold text-xs sm:text-sm text-victvs-dark-grey dark:text-victvs-off-white;
 }
 
 .list-title {
-  @apply text-2xl font-medium text-victvs-grey dark:text-victvs-off-white;
+  @apply text-lg sm:text-2xl font-medium text-victvs-grey dark:text-victvs-off-white;
 }
 
 .search-input {
-  @apply w-full py-2 pl-10  rounded-3xl outline-none text-victvs-dark-grey placeholder-victvs-dark-grey bg-victvs-light-grey dark:bg-victvs-lightest-grey;
+  @apply w-full py-2 3xl:py-4 pl-10 rounded-3xl outline-none text-victvs-dark-grey placeholder-victvs-dark-grey bg-victvs-light-grey dark:bg-victvs-lightest-grey;
 }
 
 .dropdown {

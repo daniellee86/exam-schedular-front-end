@@ -27,23 +27,23 @@ function Exams({ filteredExamData, setFilteredExamData, setExamData }) {
       {filteredExamData && (
         // LIST STATS
         <section className="h-full overflow-auto toggle-background">
-          <div className="flex items-center justify-between mb-4 mr-2 toggle-text">
+          <div className="flex items-center justify-between mb-1 sm:mb-4 mr-2 toggle-text">
             <div className="">
               <h2 className="list-title">Exam List</h2>
-              <p className="text-sm">
+              <p className="hidden sm:block  text-sm">
                 <span className="font-bold">
                   {filteredExamData.length} in total,
                 </span>{" "}
                 proceed to check them
               </p>
             </div>
-            <div className="flex flex-col items-center mr-2">
+            <div className="hidden sm:flex flex-col items-center mr-2">
               <h2 className="list-title">{filteredExamData.length}</h2>
               <p className="text-sm">In progress</p>
             </div>
           </div>
           {/* LIST HEADINGS */}
-          <div className="flex items-center border-y border-gray-300 py-2 mb-2 mr-2">
+          <div className="hidden sm:flex items-center border-y border-gray-300 py-2 mb-2 mr-2">
             {titles.map((title, index) => (
               <div className="exam-title" key={index}>
                 <p className="exam-text">{title}</p>
@@ -56,7 +56,7 @@ function Exams({ filteredExamData, setFilteredExamData, setExamData }) {
             //INDIVIDUAL LIST COMPONENT
             <Link href={`/${exam.id}`} key={index}>
               <div
-                className="flex items-center justify-between border border-gray-300 py-3 mb-2 mr-2 rounded-xl shadow cursor-pointer"
+                className="flex items-center justify-between border border-gray-300 py-2 sm:py-3 mb-2 mr-2 rounded-lg sm:rounded-xl shadow cursor-pointer"
                 key={index}
               >
                 {/* TITLE */}
@@ -74,14 +74,14 @@ function Exams({ filteredExamData, setFilteredExamData, setExamData }) {
                   </span>
                 </div>
                 {/* LOCATION */}
-                <div className="list-component-section">
+                <div className="flex-1 hidden sm:flex items-center justify-center space-x-4 text-victvs-grey dark:text-victvs-off-white">
                   <FaMapMarkerAlt className="text-victvs-yellow" size={15} />
                   <span className="text-sm toggle-text">
                     {exam.LocationName}
                   </span>
                 </div>
                 {/* DATE */}
-                <div className="list-component-section">
+                <div className="flex-1 hidden sm:flex items-center justify-center space-x-4 text-victvs-grey dark:text-victvs-off-white">
                   <BsCalendar className="text-victvs-green" size={15} />
                   <span className="text-victvs-red/80 text-sm">
                     {exam.Date}

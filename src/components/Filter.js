@@ -57,7 +57,10 @@ const Filter = ({ examData, filteredExamData, setFilteredExamData }) => {
 
   return (
     <div className="flex flex-col p-1">
-      <label htmlFor="dropdowns" className="toggle-text font-medium mb-4">
+      <label
+        htmlFor="dropdowns"
+        className="toggle-text text-sm sm:text-base font-medium mb-4"
+      >
         Exam filters
       </label>
 
