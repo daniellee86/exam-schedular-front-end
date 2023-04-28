@@ -11,7 +11,7 @@ function Exams({ filteredExamData, setFilteredExamData, setExamData }) {
   //runs on mount, gets exams, saves to global state
   useEffect(() => {
     axios
-      .get("http://localhost:3000/api/exams")
+      .get("https://exam-schedular-api.onrender.com/api/exams")
       .then((response) => {
         setExamData(response.data);
         setFilteredExamData(response.data);

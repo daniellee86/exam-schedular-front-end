@@ -180,7 +180,9 @@ export async function getServerSideProps({ params }) {
   const { id } = params;
 
   try {
-    const response = await axios.get(`http://localhost:3000/api/exams/${id}`);
+    const response = await axios.get(
+      `https://exam-schedular-api.onrender.com/api/exams/${id}`
+    );
     const exam = response.data;
     console.log(exam);
     return { props: { exam } };
