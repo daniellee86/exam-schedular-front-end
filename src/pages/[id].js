@@ -181,7 +181,8 @@ export async function getServerSideProps({ params }) {
 
   try {
     const response = await axios.get(`http://localhost:3000/api/exams/${id}`);
-    const exam = response.data[0];
+    const exam = response.data;
+    console.log(exam);
     return { props: { exam } };
   } catch (error) {
     console.log(error);
